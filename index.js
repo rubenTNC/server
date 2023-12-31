@@ -36,6 +36,7 @@ app.get("/auth/login", UserController.login)
 app.get("/auth/me", checkAuth, UserController.getMe)
 
 app.get('/news/all', NewsController.getAll)
+app.get('/:id', NewsController.fullNews)
 
 
 
