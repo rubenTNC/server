@@ -6,6 +6,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { UserController, NewsController } from "./controllers/index.js";
 import {checkAuth} from "./utils/checkAuth.js"
+import { registerValidation } from './validations.js';
+import handleValidationError from "./utils/handleValidationError.js";
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -31,8 +33,8 @@ app.get("/", (req, res) => {
 });
 
 
-app.post("/auth/register", UserController.register)
-app.get("/auth/login", UserController.login)
+app.post("/auth/register", registerValidation, handleValidationError, UserController.register)
+app.post("/auth/login", UserController.login)
 app.get("/auth/me", checkAuth, UserController.getMe)
 
 app.get('/news/all', NewsController.getAll)

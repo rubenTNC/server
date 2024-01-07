@@ -5,10 +5,9 @@ export const checkAuth = (req, res, next) => {
 
     if(token) {
         try {
-
             const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
-            req.iserId = decoded.id
+            req.userId = decoded.id
 
             next()
             

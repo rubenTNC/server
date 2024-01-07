@@ -20,9 +20,16 @@ const NewsSchema = new mongoose.Schema(
         type: String
     },
     text: [],
+    tags: [],
     url: {
         type: String
-    }
+    },
+    coments: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Coment"
+      }
+    ]
   },
   { timestamps: true }
 );
