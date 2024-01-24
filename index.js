@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
-import { UserController, NewsController } from "./controllers/index.js";
+import { UserController, NewsController, WordsController } from "./controllers/index.js";
 import {checkAuth} from "./utils/checkAuth.js"
 import { registerValidation } from './validations.js';
 import handleValidationError from "./utils/handleValidationError.js";
@@ -40,6 +40,8 @@ app.get("/auth/me", checkAuth, UserController.getMe)
 app.get('/news/all', NewsController.getAll)
 app.get('/:id', NewsController.fullNews)
 
+app.post("/words/add", checkAuth, WordsController.addWord)
+app.get("/words/getMy", checkAuth, WordsController.myWords)
 
 
 
